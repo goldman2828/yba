@@ -1,0 +1,23 @@
+while true do
+	local args = {
+		[1] = "EndDialogue",
+		[2] = {
+			["NPC"] = "Item Machine",
+			["Option"] = "Option1",
+			["Dialogue"] = "Dialogue1"
+		}
+	}
+	local player = game:GetService("Players").LocalPlayer
+	local char = player.Character or player.CharacterAdded:Wait()
+	local remoteEvent = char:FindFirstChild("RemoteEvent")
+
+	remoteEvent:FireServer(unpack(args))
+
+	task.wait(1.2)
+	local rItemGui = player.PlayerGui:FindFirstChild("RollingItem")
+	if rItemGui then
+		rItemGui:Destroy()
+	end
+	
+	task.wait(19.8)
+end
